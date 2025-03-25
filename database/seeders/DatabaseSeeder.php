@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Administrador;
 use App\Models\Funcionario;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -18,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ProdutoSeeder::class);
         $this->call(FuncionarioSeeder::class);
         $this->call(PedidoSeeder::class);
+        $this->call(AdministradorSeeder::class);
 
         // Cria um usuário específico
         User::factory()->create([
