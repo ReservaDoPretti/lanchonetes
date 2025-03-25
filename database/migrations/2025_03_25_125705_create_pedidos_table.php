@@ -12,7 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pedidos', function (Blueprint $table) {
-            $table->id();
+            $table->id();                
+            $table->string('nome');      
+            $table->text('ingredientes');           
+            $table->decimal('valor', 10,2);          
             $table->timestamps();
         });
     }
