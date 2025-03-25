@@ -4,27 +4,23 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreatePedidosTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();                
-            $table->string('nome');      
-            $table->text('ingredientes');           
-            $table->decimal('valor', 10,2);          
+            $table->foreignId('cliente_id')->constrained()->onDelete('cascade'); // Coluna cliente_id
+            $table->decimal('valor_total', 10, 2);
+            $table->decimal('valor_com_desconto', 10, 2)->nullable();
+            $table->string('status');
+            $table->string('forma_pagamento');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('pedidos');
     }
-};
+}
